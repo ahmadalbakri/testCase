@@ -1,5 +1,5 @@
 # testCase
 Stack Used: 
-vuejs
-CSS3
-HTML5
+	1) vuejs
+	2) Twitter Bootstrap
+	3) HTML5
