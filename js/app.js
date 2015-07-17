@@ -2,37 +2,34 @@
     var carlist = new Vue({
         el: '#carlist',
         data: {
-            "cars": [{
-                "model": "Alpha",
-                "features": [{
-                    "doors": 3,
-                    "leatherseat": "yes"
+            openedCount: null,
+            carModel: '',
+            carDoors: '',
+            carColors: '',
+            "lightningCars": [{
+                "colorSelection": ['Red', 'Blue', 'Green'],
+                "models": [{
+                    "name": "Alpha",
+                    "features": [{
+                        "doors": [3, 5]
+                    }]
+                }, {
+                    "name": "Beta",
+                    "features": [{
+                        "doors": [3, 5]
+                    }]
+                }, {
+                    "name": "Gamma",
+                    "features": [{
+                        "doors": [3]
+                    }]
                 }]
-            }, {
-                "model": "Beta",
-                "features": [{
-                    "doors": 3,
-                    "leatherseat": "no"
-                }]
-            }, {
-                "model": "Gamma",
-                "features": [{
-                    "doors": 2,
-                    "leatherseat": "no"
-                }]
-            }],
-            "colors": [{
-                "options1": "red",
-                "options2": "white",
-                "options3": "blue"
             }]
-        }
-    })
-
-    new Vue({
-        el: '#demo',
-        data: {
-            picked: 'one'
+        },
+        methods: {
+            onClick: function($index) {
+                this.openedCount = $index;
+            }
         }
     })
 }())

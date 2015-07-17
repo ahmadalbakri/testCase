@@ -1,0 +1,34 @@
+{
+    "cars": [{
+        "model": "Alpha",
+        "features": [{
+            "doors": [{
+                "doorA": 3,
+                "doorB": 5
+            }],
+            "leatherseat": "yes"
+        }]
+    }, {
+        "model": "Beta",
+        "features": [{
+            "doors": [{
+                "doorA": 3,
+                "doorB": 5
+            }],
+            "leatherseat": "no"
+        }]
+    }, {
+        "model": "Gamma",
+        "features": [{
+            "doors": [{
+                "doorA": 3
+            }],
+            "leatherseat": "no"
+        }]
+    }],
+    "colors": [{
+        "options1": "red",
+        "options2": "white",
+        "options3": "blue"
+    }]
+}

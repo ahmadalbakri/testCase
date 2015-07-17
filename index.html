@@ -9,54 +9,55 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>testCase</title>
+    <title>Lightning Ltd. Car Selection</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Core Bootstrap CSS -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
-    <!-- Custom styles for this template -->
-    <link href="cover.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/main.css">
     <script src="bower_components/vue/dist/vue.js"></script>
 </head>
 
 <body>
-    <div class="site-wrapper">
-        <div class="site-wrapper-inner">
-            <div class="cover-container">
-                <div class="masthead clearfix">
-                    <div class="inner">
-                        <h3 class="masthead-brand">testCase</h3>
-                        <nav>
-                            <ul class="nav masthead-nav">
-                                <li class="active"><a href="#">Home</a></li>
-                                <li><a href="#">Features</a></li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-                <div class="inner cover">
-                    <h1 class="cover-heading">Select your car</h1>
-                    <p class="lead">Various selection to choose!</p>
-                    <form id="demo">
-                        <!-- radio buttons -->
-                        <p>
-                            <input type="radio" name="picked" value="one" v-model="picked">
-                            <input type="radio" name="picked" value="two" v-model="picked"> {{picked}}
-                        </p>
-                        <p><pre>data: {{$data | json 2}}</pre></p>
-                    </form>
-                    <ul id="carlist">
-                        <li v-repeat="car: cars" class="item-{{$index}}">
-                            {{car.model}} // 
-                                <div v-repeat="features: car.features">
-                                    {{ features.doors }}
-                                </div>
-                        </li>
-                    </ul>
-                </div>
+    <div id="carlist" class="container">
+        <div class="row">
+            <h1><a href="/">Lightning Ltd. Car Selection</a></h1>
+            <h3>1st, Select your car</h3>
+            <form class="clearfix">
+                <ul>
+                    <!-- think of this as "for each user in users" -->
+                    <li v-repeat="model : lightningCars[0].models" class="col-sm-4 item-{{$index}}">
+                        <input type="radio" id="car-{{$index}}" value="{{model.name}}" v-model="carModel">
+                        <label for="car-{{$index}}" v-on="click : onClick($index)">{{ model.name }}</label>
+                        <div class="car_details" v-class="open : $index == openedCount">
+                            <span class="options">Car Doors
+                                <select v-model="carDoors">
+                                    <option v-repeat="door : model.features[0].doors" value="{{ door }}">{{ door }}</option>
+                                </select>
+                              </span>
+                        </div>
+                    </li>
+                </ul>
+            </form>
+            <br>
+            <h3>2nd, Pick your favourite color</h3>
+            <div class="options">Color
+                <select v-model="carColors">
+                    <option v-repeat="color : lightningCars[0].colorSelection" value="{{ color }}">{{ color }}</option>
+                </select>
+            </div>
+            <br>
+            <h3>Here's your selection</h3>
+            <div class="selection">
+                <p>Model - <b><i>{{$data.carModel | json 2}}</i></b></p>
+                <p>Car doors - <b><i>{{$data.carDoors | json 2}}</b></i>
+                </p>
+                <p>Car colors - <span style="color: {{$data.carColors | json 2}} "><b><i>{{$data.carColors | json 2}}</b></i></span></p>
             </div>
         </div>
     </div>
 </body>
 <script src="js/app.js"></script>
+
 </html>
