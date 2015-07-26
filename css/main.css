@@ -8,16 +8,16 @@ body {
     color: #666
 }
 
+li {
+    list-style: none;
+}
+
 h1 {
     font-size: 18px
 }
 
 h3 {
     font-size: 14px
-}
-
-li {
-    list-style: none;
 }
 
 h3:after {
